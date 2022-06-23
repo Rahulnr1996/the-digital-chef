@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+								<h4 class="title">
+									<span class="pull-left"><span class="text"><span class="line">Items <strong>Here</strong></span></span></span>
+									<span class="pull-right">
+										<a class="left button" href="#myCarousel" data-slide="prev"></a><a class="right button" href="#myCarousel" data-slide="next"></a>
+									</span>
+								</h4>
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+
+											<ul class="thumbnails">
+												{% for i in pr %}
+
+												<li class="span2.5">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<p><a href="{{i.get_url}}"><img src="{{ i.img.url }}" alt="" height="350" width="350" /></a></p>
+														<a href="product_detail.html" class="title">{{ i.name}}</a><br/>
+														<a href="products.html" class="category">{{i.category}}</a>
+														<p class="price">Rs:{{i.price}}</p>
+														<p class="stock"> Stock Left:{{i.stock}}</p>
+														<p class="description">{{i.desc|truncatechars:30}}</p>
+													</div>
+												</li>
+												{% endfor %}
+
+
+
+
+
+
+
+		<script src="{% static 'hm/themes/js/common.js' %}"></script>
+		<script src="{% static 'hm/themes/js/jquery.flexslider-min.js' %}"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+    </body>
+</html>
+{% endblock %}

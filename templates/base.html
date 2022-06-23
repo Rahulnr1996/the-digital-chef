@@ -1,0 +1,71 @@
+{% load static %}
+
+<html lang="en">
+<head>
+		<meta charset="utf-8">
+		<title>Bootstrap E-commerce Templates</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="">
+		<!--[if ie]><meta content='IE=8' http-equiv='X-UA-Compatible'><![endif]-->
+		<!-- bootstrap -->
+		<link href="{% static 'hm/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+		<link href="{% static 'hm/bootstrap/css/bootstrap-responsive.min.css' %}" rel="stylesheet">
+
+		<link href="{% static 'hm/themes/css/bootstrappage.css' %}" rel="stylesheet"/>
+
+		<!-- global styles -->
+		<link href="{% static 'hm/themes/css/flexslider.css' %}" rel="stylesheet"/>
+		<link href="{% static 'hm/themes/css/main.css' %}" rel="stylesheet"/>
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+		<!-- scripts -->
+		<script src="{% static 'hm/themes/js/jquery-1.7.2.min.js' %}"></script>
+		<script src="{% static 'hm/bootstrap/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'hm/themes/js/superfish.js' %}"></script>
+		<script src="{% static 'hm/themes/js/jquery.scrolltotop.js' %}"></script>
+		<!--[if lt IE 9]>
+			<script src="{% static 'http://html5shim.googlecode.com/svn/trunk/html5.js' %}"></script>
+			<script src="{% static 'js/respond.min.js' %}"></script>
+		<![endif]-->
+</head>
+<body>
+
+		<div id="top-bar" class="container w3-teal">
+			<div class="container">
+				<div class="span8">
+					<div class="account pull-left">
+						<ul class="user-menu">
+							<li><a class="active"href="/">Home</a></li>
+							<li><a class="active" href="{% url 'CartList' %}">Cart</a></li>
+							<li><a class="active"href="/">Logout</a></li>
+							<li><a class="active"href="/log">Login</a></li>
+							<li><a class="active"href="{% url 'reg' %}">Register</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div align="right">
+			<form action="{% url 'searching' %}" method="get">
+						<div class="input-group rounded">
+							  <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" name="q" >
+							  <span class="input-group-text border-0" id="search-addon">
+								<i class="fas fa-search"></i>
+							</span>
+						</div>
+			</form>
+			</div>
+
+
+
+				<a href="/"><b><p align="center" style="font-size:40px;"> the DIGITAL CHEF</p></b></a>
+
+		</div>
+		<div id="wrapper" class="container">
+
+
+{% block content %}
+		</div>
+{% endblock %}
+
+</body>
+</html>

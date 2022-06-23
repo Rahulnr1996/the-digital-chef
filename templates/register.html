@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<section class="vh-100 bg-image"
+  style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5" align="center">Create an account</h2>
+
+             <form method="post" action="{% url 'reg' %}">
+                 {% csrf_token %}
+                      <div align="center">
+                      <label> Firstname </label><br>
+                      <input type="text"  name="firstname" placeholder= "Firstname" size="15" required /><br>
+                      <label> Lastname: </label><br>
+                      <input type="text" name="lastname" placeholder="Lastname" size="15"required /><br>
+                      <label> username </label><br>
+                      <input type="text" name="username" placeholder= "Username" size="15" required /><br>
+                      <label> email </label><br>
+                      <input type="email" name="email" placeholder= "email" size="15" required /><br>
+                      <label> password </label><br>
+                      <input type="password" name="password1" placeholder= "password" size="15" required /><br>
+                      <label> Re-password </label><br>
+                      <input type="password" name="password" placeholder= "confirm password" size="15" required /><br>
+
+                      <input type="submit" value="register">
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+
+.column {
+  float: left;
+  width: 50%;
+  padding: 10px;
+  height: 500px;
+}
+
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+</style>
+<style>
+	.img-fluid {
+				  max-width: 400;
+				  height: 400;
+				}
+</style>
+    <body>
+		<div class="row">
+			<div class="column" align="center">
+				<img src="{{prd.img.url}}"  alt=""  class="img-fluid" width="400px;" height="400px;">
+			</div>
+
+
+			<div class="column" style="font-size:20px;" >
+				<address><b>
+					<span><u style="color:#ab7035">{{prd.name}}</u></span><br><br>
+					<strong>description:</strong> <span>{{prd.desc}}</span><br><br>
+					<strong>stock:</strong> <span>{{prd.stock}}</span><br>
+					<strong>Availability:</strong> <span>{{prd.available}}</span><br></b>
+				</address>
+					<h4><strong>Price: Rs{{prd.price}}</strong></h4>
+				{% if prd.stock <= 0 %}
+					<h2 style="color:red">Sold Out</h2>
+				{% else %}
+					<button type="button" class="btn btn-success btn-lg">Add to Cart</button>
+				{% endif %}
+			</div>
+		</div>
+    </body>
+{% endblock %}
+</html>

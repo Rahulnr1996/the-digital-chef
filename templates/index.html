@@ -1,0 +1,148 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html xmlns="http://www.w3.org/1999/html">
+
+
+			<section  class="homepage-slider" id="home-slider">
+				<div class="flexslider">
+
+							<img src="{% static 'hm/themes/images/carousel/home.jpg' %}" alt="" height="350" />
+
+				</div>
+			</section>
+
+
+			<div id=""align="center">
+				<h2>QUALITY FOOD ITEMS</h2>
+
+			</div>
+			<section class="main-content">
+				<div class="row">
+					<div class="span12">
+							<div class="span12">
+								<style>
+									.dropbtn {
+									  background-color: #4CAF50;
+									  color: white;
+									  padding: 10px;
+									  font-size: 16px;
+									  border: none;
+									  cursor: pointer;
+									}
+
+									.dropdown {
+									  position: relative;
+									  display: inline-block;
+									}
+
+									.dropdown-content {
+									  display: none;
+									  position: absolute;
+									  background-color: #f9f9f9;
+									  min-width: 160px;
+									  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+									  z-index: 1;
+									}
+
+									.dropdown-content a {
+									  color: black;
+									  padding: 12px 16px;
+									  text-decoration: none;
+									  display: block;
+									}
+
+									.dropdown-content a:hover {background-color: #caccc4}
+
+									.dropdown:hover .dropdown-content {
+									  display: block;
+									}
+
+									.dropdown:hover .dropbtn {
+									  background-color: #3e8e41;
+									}
+
+								</style>
+
+									<div class="dropdown">
+									  <button class="dropbtn">Filter</button>
+									  <div class="dropdown-content">
+									  <a href="/">All ITEMS</a>
+									  {% for i in ct %}
+									  <a href={{i.get_url}}>{{i.name}}</a>
+									  <br>
+									  {% endfor %}
+
+									  </div>
+									</div>
+
+								<h4 class="title">
+									<span class="pull-left">Items <strong>Here</strong></span>
+
+								</h4>
+
+								<div id="myCarousel" class="myCarousel carousel slide">
+									<div class="carousel-inner">
+										<div class="active item">
+
+											<ul class="thumbnails">
+
+												{% for i in pg.object_list %}
+
+												<li class="span2.5">
+													<div class="product-box">
+														<span class="sale_tag"></span>
+														<style>
+															.img-fluid {
+												  max-width: 350;
+												  height: 350;
+												}
+														</style>
+
+														<p><a href="{{i.get_url}}"><img src="{{ i.img.url }}" class="img-fluid" alt="Responsive image" height="350" width="350" /></a></p>
+														<p><a href="{{i.get_url}}" ><h3><b>{{ i.name}}</b></h3></a></p><br>
+														<p class="description">{{i.desc|truncatechars:30}}</p>
+													</div>
+												</li>
+												{% endfor %}
+
+
+
+											</ul>
+
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+					</div>
+				</div>
+				<center>
+				{% for p in pg.paginator.page_range %}
+
+				<a href="?page={{p}}" class="btn btn-light btn-sm{% if pg.number == p %} active {% endif %}">{{p}}</a>
+				{% endfor %}
+				</center>
+			</section>
+
+
+	<script src="{% static 'hm/themes/js/common.js' %}"></script>
+		<script src="{% static 'hm/themes/js/jquery.flexslider-min.js' %}"></script>
+		<script type="text/javascript">
+			$(function() {
+				$(document).ready(function() {
+					$('.flexslider').flexslider({
+						animation: "fade",
+						slideshowSpeed: 4000,
+						animationSpeed: 600,
+						controlNav: false,
+						directionNav: true,
+						controlsContainer: ".flex-container" // the container that holds the flexslider
+					});
+				});
+			});
+		</script>
+    </body>
+</html>
+{% endblock %}
